@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szczep Harcerski "Skrzydło"</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel ="shortcut icon" href="images/icon.jpg" type="image/x-icon">
+    <script type="module" src="script.js" defer></script>
+</head>
+<body>
+    <div id="add-button">
+        <a href="fiszki.html"><button class="back-css"></button></a>
+    </div><br>
+    <div id="logo">
+        <img src="images/skrzydlo_logo_biale.png" width="100" height="100" alt="Logo Szczepu Harcerskiego Skrzydło">
+    </div>
+    <form id="add-form" onsubmit="return false;">
+        <label for="question">Pytanie:</label><br>
+        <input type="text" id="question" name="question"><br><br>
+        <label for="answer">Odpowiedź:</label><br>
+        <input type="text" id="answer" name="answer"><br><br>
+        <button type="button" id="submit" onClick="dodajFiszkę()">Dodaj fiszkę</button>
+    </form>
+    <div id="table-container"></div>
+</body>
+</html>
