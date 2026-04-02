@@ -6,7 +6,7 @@
     <title>Szczep Harcerski "Skrzydło"</title>
     <link rel="stylesheet" href="style.css">
     <link rel ="shortcut icon" href="images/icon.jpg" type="image/x-icon">
-    <script src="script.js" defer></script>
+    <script type="module" src="fiszki.js" defer></script>
 </head>
 <body>
     <div id="add-button">
@@ -21,26 +21,19 @@
         <input type="checkbox" id="fiszka-toggle" class="fiszka-toggle" hidden>
         <label for="fiszka-toggle" class="fiszka">
             <div class="fiszka-side fiszka-side-a" id="a">
-                <span class="fiszka-label "></span>
-                <p id="pytanie"></p>
-
-            </div>
+                <span class="fiszka-label"></span>
+                <p id="pytanie_fiszka">Pytanie</p>
             </div>
             <div class="fiszka-side fiszka-side-b" id="b">
                 <span class="fiszka-label"></span>
-                <p>ODPOWIEDŹ</p>
+                <p id="odpowiedz_fiszka">ODPOWIEDŹ</p>
             </div>
         </label>
     </div>
     <div class="controls-row">
-        <button class="control-btn">&#10094;</button>
-        <button class="control-btn">&#127922;</button>
-        <button class="control-btn">&#10095;</button>
-    </div>
-    <div class="action-buttons">
-        <button class="action-btn star-btn">★</button>
+        <button class="control-btn" onclick=odejmij()>&#10094;</button>
         <a href = "techniki.html"><button class="action-btn settings-btn">⚙</button></a>
-        <button class="action-btn close-btn">✕</button>
+        <button class="control-btn" onclick=dodaj()>&#10095;</button>
     </div>
 </body>
 </html>

@@ -20,11 +20,11 @@ async function pokaz() {
     tableDiv.innerHTML = '<p>Ładowanie danych...</p>';
     
     try {
-        // Spróbujmy różnych nazw tabel
+       
         let data = null;
         let error = null;
         
-        console.log(`Próbuję tabeli: Fiszki`);
+        
         const result = await supabase
             .from('Fiszka')
             .select('*');
@@ -62,8 +62,9 @@ async function pokaz() {
         const thead = document.createElement('thead');
         const headerRow = document.createElement('tr');
         
-        // Pobieranie nazw kolumn z pierwszego rekordu, bez id
-        const columns = Object.keys(data[0]).filter(column => column !== 'id');
+        // Pobieranie nazw kolumn z pierwszego rekordu, bez id i bez kategorii
+        const hiddenColumns = ['id', 'Kategoria', 'kategoria', 'category'];
+        const columns = Object.keys(data[0]).filter(column => !hiddenColumns.includes(column));
         console.log('Kolumny:', columns);
         columns.forEach(headerText => {
             const th = document.createElement('th');
@@ -114,18 +115,19 @@ async function pokaz() {
 }
 
 async function dodajFiszke() {
-    const questionInput = document.getElementById('pytanie');
+    const questionInput = document.getElementById('question');
     const answerInput = document.getElementById('answer');
+    const categoryInput = document.getElementById('kategoria');
     
-    if (!questionInput.value || !answerInput.value) {
-        alert('Uzupełnij oba pola.');
+    if (!questionInput.value || !answerInput.value || !categoryInput.value) {
+        alert('Uzupełnij wszystkie pola.');
         return;
     }
 
     const { data, error } = await supabase
         .from('Fiszka')
         .insert([
-            { strona_a: questionInput.value, strona_b: answerInput.value }
+            { strona_a: questionInput.value, strona_b: answerInput.value, Kategoria: categoryInput.value }
         ]);
 
     if (error) {
@@ -136,11 +138,14 @@ async function dodajFiszke() {
 
     questionInput.value = '';
     answerInput.value = '';
+    categoryInput.value = '';
     alert('Dodano fiszkę!');
 
     // odśwież tabelę
     pokaz();
 }
+
+
 
 // Wywołanie funkcji po załadowaniu strony
 document.addEventListener('DOMContentLoaded', () => {

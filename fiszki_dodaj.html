@@ -10,18 +10,40 @@
 </head>
 <body>
     <div id="add-button">
-        <a href="fiszki.html"><button class="back-css"></button></a>
-    </div><br>
-    <div id="logo">
-        <img src="images/skrzydlo_logo_biale.png" width="100" height="100" alt="Logo Szczepu Harcerskiego Skrzydło">
+        <a href="fiszki.html"><button class="back-css" type="button" aria-label="Wróć"></button></a>
     </div>
-    <form id="add-form" onsubmit="return false;">
-        <label for="question">Pytanie:</label><br>
-        <input type="text" id="question" name="question"><br><br>
-        <label for="answer">Odpowiedź:</label><br>
-        <input type="text" id="answer" name="answer"><br><br>
-        <button type="button" id="submit" onClick="dodajFiszkę()">Dodaj fiszkę</button>
-    </form>
-    <div id="table-container"></div>
+    <main id="page-shell">
+        <section class="card form-card">
+            <div id="logo">
+                <img src="images/skrzydlo_logo_biale.png" width="100" height="100" alt="Logo Szczepu Harcerskiego Skrzydło">
+            </div>
+            <h1>Dodaj nową fiszkę</h1>
+            <form id="add-form" onsubmit="return false;">
+                <label for="question">Pytanie:</label>
+                <input type="text" id="question" name="question" placeholder="Wpisz treść pytania">
+                <label for="answer">Odpowiedź:</label>
+                <input type="text" id="answer" name="answer" placeholder="Wpisz treść odpowiedzi">
+                <select id="kategoria" name="category">
+                    <option value="" disabled selected>Wybierz kategorię</option>
+                    <option value="1">Wiedza o Szczepie</option>
+                    <option value="2">Historia</option>
+                    <option value="3">Pionierka</option>
+                    <option value="4">Terenoznstwo</option>
+                    <option value="5">Samarytanka</option>
+                    <option value="6">PiPH</option>
+                    <option value="7">Inne Organizacje</option>   
+                    <option value="8">Major Ponury</option>
+                    <option value="9">1SBS</option>
+                    <option value="10">Cichociemni</option>
+                    <option value="11">Ciotki</option>
+                    <option value="12">Struktura</option>
+                    <option value="13">Symbolika</option>
+                    <option value="14">Szyfry</option>
+                </select>
+                <button type="button" id="submit" onClick="dodajFiszkę()">Dodaj fiszkę</button>
+            </form>
+        </section>
+        <div id="table-container"></div>
+    </main>
 </body>
 </html>
