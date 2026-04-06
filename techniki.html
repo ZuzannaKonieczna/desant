@@ -1,38 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Szczep Harcerski "Skrzydło"</title>
+    <title>Wybierz techniki - Szczep Harcerski "Skrzydło"</title>
     <link rel="stylesheet" href="style.css">
-    <link rel ="shortcut icon" href="images/icon.jpg" type="image/x-icon">
-    <script type="module" src="fiszki.js" defer></script>
+    <link rel="shortcut icon" href="images/icon.jpg" type="image/x-icon">
 </head>
 <body>
     <div id="add-button">
         <a href="fiszki.html"><button class="back-css"></button></a>
-        
     </div><br>
     <div id="logo">
         <img src="images/skrzydlo_logo_biale.png" width="100" height="100" alt="Logo Szczepu Harcerskiego Skrzydło">
     </div>
-    <div class="techniki">
-        <input type="checkbox" value ="1"> Wiedza o Szczepie <br>
-        <input type="checkbox" value ="2"> Historia <br>
-        <input type="checkbox" value ="3"> Pionierka <br>
-        <input type="checkbox" value ="4"> Terenoznstwo <br>
-        <input type="checkbox" value ="5"> Samarytanka <br>
-        <input type="checkbox" value ="6"> PiPH <br>
-        <input type="checkbox" value ="7"> Inne Organizacje <br>
-        <input type="checkbox" value ="8"> Major Ponury <br>
-        <input type="checkbox" value ="9"> 1SBS <br>
-        <input type="checkbox" value ="10"> Cichociemni <br>
-        <input type="checkbox" value ="11"> Ciotki <br>
-        <input type="checkbox" value ="12"> Struktura <br>
-        <input type="checkbox" value ="13"> Symbolika <br>
-        <input type="checkbox" value ="14"> Szyfry <br>
-        
     
-    </div>
+    <div class="techniki">
+        <h2>Wybierz techniki do powtórki:</h2>
+        <label><input type="checkbox" value="1"> Wiedza o Szczepie</label><br>
+        <label><input type="checkbox" value="2"> Historia</label><br>
+        <label><input type="checkbox" value="3"> Pionierka</label><br>
+        <label><input type="checkbox" value="4"> Terenoznawstwo</label><br>
+        <label><input type="checkbox" value="5"> Samarytanka</label><br>
+        <label><input type="checkbox" value="6"> PiPH</label><br>
+        <label><input type="checkbox" value="7"> Inne Organizacje</label><br>
+        <label><input type="checkbox" value="8"> Major Ponury</label><br>
+        <label><input type="checkbox" value="9"> 1SBS</label><br>
+        <label><input type="checkbox" value="10"> Cichociemni</label><br>
+        <label><input type="checkbox" value="11"> Ciotki</label><br>
+        <label><input type="checkbox" value="12"> Struktura</label><br>
+        <label><input type="checkbox" value="13"> Symbolika</label><br>
+        <label><input type="checkbox" value="14"> Szyfry</label><br>
+        
+        <button id="Potwierdz">Rozpocznij naukę</button>
+        <button id="Kontynuuj" >Kontynuuj poprzednią sesję</button>
+
+    <script>
+        document.getElementById('Potwierdz').addEventListener('click', function() {
+            // Zbierz zaznaczone techniki
+            const checkboxes = document.querySelectorAll('.techniki input[type="checkbox"]');
+            const selectedTechniques = [];
+            
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    selectedTechniques.push(checkbox.value);
+                }
+            });
+            
+            // Zapisz w localStorage
+            localStorage.setItem('selectedTechniques', JSON.stringify(selectedTechniques));
+            
+            // USUŃ ZAPISANY STAN FISZKI (zaczynamy nową sesję)
+            localStorage.removeItem('flashcardState');
+            
+            // Przejdź do strony fiszek
+            window.location.href = 'fiszki.html';
+        });
+        
+        // Opcjonalny przycisk do kontynuowania poprzedniej sesji
+        const kontynuujBtn = document.getElementById('Kontynuuj');
+        if (kontynuujBtn) {
+            kontynuujBtn.addEventListener('click', function() {
+                // Nie zmieniamy selectedTechniques ani nie usuwamy flashcardState
+                window.location.href = 'fiszki.html';
+            });
+        }
+    </script>
 </body>
 </html>
