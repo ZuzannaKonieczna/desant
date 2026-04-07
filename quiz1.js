@@ -17,11 +17,6 @@ async function pobierzPytania() {
             .from('Pytania')
             .select('id, tresc, odpowiedz1, odpowiedz2, odpowiedz3, odpowiedz4, poprawna, kategoria')
 
-        if (error) {
-            console.error('Błąd przy pobieraniu pytań:', error)
-            return
-        }
-
         let pytania = data
 
         // Pobierz wybrane techniki i liczbę pytań
