@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Pobierz wszystkie pytania
             const { data: allQuestions, error: fetchError } = await supabase
-                .from('pytania')
+                .from('Pytania')
                 .select('*');
             
             if (fetchError) {
