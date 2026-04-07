@@ -17,7 +17,7 @@ async function pobierzPytania() {
             .from('Pytania')
             .select('id, tresc, odpowiedz1, odpowiedz2, odpowiedz3, odpowiedz4, poprawna, kategoria')
 
-        let pytania = data
+        pytania = data
 
         // Pobierz wybrane techniki i liczbę pytań
         const selectedTechniques = JSON.parse(localStorage.getItem('selectedQuizTechniques') || '[]')
