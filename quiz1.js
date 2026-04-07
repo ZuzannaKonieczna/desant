@@ -15,18 +15,36 @@ async function pobierzPytania() {
         console.log('Pobieranie pytań z bazy danych...')
         const { data, error } = await supabase
             .from('Pytania')
-            .select('id, tresc, odpowiedz1, odpowiedz2, odpowiedz3, odpowiedz4, poprawna')
+            .select('id, tresc, odpowiedz1, odpowiedz2, odpowiedz3, odpowiedz4, poprawna, kategoria')
 
         if (error) {
             console.error('Błąd przy pobieraniu pytań:', error)
             return
         }
 
-        pytania = data
+        let pytania = data
+
+        // Pobierz wybrane techniki i liczbę pytań
+        const selectedTechniques = JSON.parse(localStorage.getItem('selectedQuizTechniques') || '[]')
+        const questionCount = parseInt(localStorage.getItem('quizQuestionCount') || '10')
+
+        // Filtruj pytania według technik
+        if (selectedTechniques.length > 0) {
+            pytania = pytania.filter(pytanie => selectedTechniques.includes(pytanie.kategoria.toString()))
+        }
+
+        // Przetasuj pytania
+        pytania = pytania.sort(() => Math.random() - 0.5)
+
+        // Ogranicz liczbę pytań
+        pytania = pytania.slice(0, questionCount)
+
         console.log('Pobrano pytania:', pytania)
         
         if (pytania.length > 0) {
             wyswietlPytanie()
+        } else {
+            document.getElementById('pytanie').textContent = 'Brak pytań dla wybranych ustawień.'
         }
     } catch (err) {
         console.error('Błąd:', err)

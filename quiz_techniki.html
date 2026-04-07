@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wybierz techniki - Szczep Harcerski "Skrzydło"</title>
+    <title>Wybierz techniki do quizu - Szczep Harcerski "Skrzydło"</title>
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="images/icon.jpg" type="image/x-icon">
 </head>
@@ -16,7 +16,7 @@
     </div>
     
     <div class="techniki">
-        <h2>Wybierz techniki do powtórki:</h2>
+        <h2>Wybierz techniki do quizu:</h2>
         <label><input type="checkbox" value="1"> Wiedza o Szczepie</label><br>
         <label><input type="checkbox" value="2"> Historia</label><br>
         <label><input type="checkbox" value="3"> Pionierka</label><br>
@@ -32,12 +32,12 @@
         <label><input type="checkbox" value="13"> Symbolika</label><br>
         <label><input type="checkbox" value="14"> Szyfry</label><br>
         
-        <button id="Potwierdz">Rozpocznij naukę</button>
+        <button id="Potwierdz">Dalej</button>
         <button id="Kontynuuj" >Resetuj</button>
 
     <script>
         // Funkcja do zapisania wybranych technik
-        function saveTechniques(continueSession = false) {
+        function saveTechniques() {
             // Zbierz zaznaczone techniki
             const checkboxes = document.querySelectorAll('.techniki input[type="checkbox"]');
             const selectedTechniques = [];
@@ -49,30 +49,29 @@
             });
             
             // Zapisz w localStorage
-            localStorage.setItem('selectedTechniques', JSON.stringify(selectedTechniques));
+            localStorage.setItem('selectedQuizTechniques', JSON.stringify(selectedTechniques));
             
-            // Jeśli to nowa sesja, wyczyść stary stan
-            if (!continueSession) {
-                localStorage.removeItem('flashcardState');
-            }
-            
-            // Przejdź do strony fiszek
-            window.location.href = 'fiszki.html';
+            // Przejdź do ustawień quizu
+            window.location.href = 'quiz_settings.html';
         }
 
-        // Przycisk "Rozpocznij naukę"
+        // Funkcja resetowania
+        function resetQuizSettings() {
+            localStorage.removeItem('selectedQuizTechniques');
+            localStorage.removeItem('quizQuestionCount');
+            window.location.href = 'quiz.html';
+        }
+
+        // Przycisk "Dalej"
         document.getElementById('Potwierdz').addEventListener('click', function() {
-            saveTechniques(false); // Nowa sesja - usuń stary stan
+            saveTechniques();
         });
         
-        // Przycisk "Kontynuuj" (teraz Resetuj)
+        // Przycisk "Resetuj"
         const kontynuujBtn = document.getElementById('Kontynuuj');
         if (kontynuujBtn) {
             kontynuujBtn.addEventListener('click', function() {
-                // Resetuj - usuń wybrane techniki i stan fiszek
-                localStorage.removeItem('selectedTechniques');
-                localStorage.removeItem('flashcardState');
-                window.location.href = 'fiszki.html';
+                resetQuizSettings();
             });
         }
 
@@ -80,7 +79,7 @@
         const backBtn = document.getElementById('backBtn');
         if (backBtn) {
             backBtn.addEventListener('click', function() {
-                saveTechniques(true); // Wróć z zachowaniem zmian
+                window.location.href = 'index.html';
             });
         }
     </script>

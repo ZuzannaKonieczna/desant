@@ -347,9 +347,7 @@ select {
     background: #fbfdf8;
 }
 
-select {
-    
-}
+
 
 option {
     background: #fbfdf8;
@@ -373,16 +371,124 @@ option {
 }
 
 .techniki{
-    width:25%;
-    position: relative;
-    left: 45%;
-    font-size: large;
+    width: 80%;
+    max-width: 400px;
+    font-size: 20px;
+    text-align: center;
 }
 
-.odp{
-   font-size: small;
-   transition: background-color 0.3s ease;
-   cursor: pointer;
+.techniki h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.techniki label {
+    display: block;
+    margin: 2px 0;
+    font-size: 22px;
+    cursor: pointer;
+    line-height: 1.2;
+}
+
+.techniki input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+.techniki button {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 250px;
+}
+
+.question-count {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.question-count label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.question-count input {
+    width: 80px;
+    padding: 8px;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.quiz-settings {
+    width: 80%;
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 20px;
+}
+
+.quiz-settings h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.quiz-settings p {
+    margin: 20px 0;
+    font-size: 22px;
+}
+
+@media (max-width: 600px) {
+    .techniki {
+        width: 95%;
+        font-size: 22px;
+        margin: 10px auto;
+    }
+    
+    .techniki h2 {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+    
+    .techniki label {
+        font-size: 24px;
+        margin: 3px 0;
+    }
+    
+    .techniki input[type="checkbox"] {
+        transform: scale(1.5);
+        margin-right: 15px;
+    }
+    
+    .techniki button {
+        margin-top: 15px;
+        font-size: 24px;
+        padding: 15px;
+    }
+    
+    .question-count label {
+        font-size: 24px;
+    }
+    
+    .question-count input {
+        width: 100px;
+        padding: 10px;
+        font-size: 20px;
+    }
+    
+    .quiz-settings {
+        width: 95%;
+        font-size: 22px;
+    }
+    
+    .quiz-settings h2 {
+        font-size: 32px;
+    }
+    
+    .quiz-settings p {
+        font-size: 24px;
+    }
 }
 
 .odp.correct {
