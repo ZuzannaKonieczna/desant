@@ -6,7 +6,7 @@
     <title>Szczep Harcerski "Skrzydło"</title>
     <link rel="stylesheet" href="style.css">
     <link rel ="shortcut icon" href="images/icon.jpg" type="image/x-icon">
-    <script src="quiz1.js" ></script>
+    <script src="quiz1.js"></script>
 </head>
 <body>
     <div id="add-button">
@@ -24,20 +24,6 @@
        <button class="odp" id = "pytanie3">ODPOWIEDZ 3</button>
        <button class="odp" id = "pytanie4">ODPOWIEDZ 4</button>
     </nav>
-     <script>
-        // CZEKAMY AŻ SUPABASE SIĘ ZAŁADUJE
-        document.addEventListener('DOMContentLoaded', function() {
-            // Sprawdzamy czy Supabase jest dostępny
-            if (typeof supabase === 'undefined' && typeof window.supabase === 'undefined') {
-                document.getElementById('pytanie').innerHTML = '❌ Błąd: Supabase nie mógł się załadować. Sprawdź połączenie z internetem.';
-                return;
-            }
-            
-            // Ładujemy główny skrypt
-            const script = document.createElement('script');
-            script.src = 'quiz.js';
-            document.body.appendChild(script);
-        });
-    </script>
+    
 </body>
 </html>
