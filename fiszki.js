@@ -95,8 +95,8 @@ function filterFlashcards(flashcards, selectedTechniques) {
     console.log(`Przefiltrowano do ${filtered.length} fiszek`);
     
     if (filtered.length === 0) {
-        console.log('Brak fiszek dla wybranych technik - wyświetlam wszystkie');
-        return flashcards;
+        console.log('Brak fiszek dla wybranych technik');
+        return []; // Zwróć pustą tablicę zamiast wszystkich
     }
     
     return filtered;
@@ -114,8 +114,8 @@ async function displayCurrentFlashcard() {
     }
     
     if (filteredFlashcards.length === 0) {
-        pytanieElement.textContent = 'Brak fiszek dla wybranych technik';
-        odpowiedzElement.textContent = 'Spróbuj wybrać inne techniki';
+        pytanieElement.textContent = ' Brak fiszek dla wybranych kategorii';
+        odpowiedzElement.textContent = 'Wróć do wyboru i zaznacz inne techniki';
         if (counterElement) {
             counterElement.textContent = 'Brak fiszek';
         }
@@ -166,7 +166,7 @@ window.dodaj = async function() {
         console.log('To już ostatnia fiszka');
         const pytanieElement = document.getElementById('pytanie_fiszka');
         if (pytanieElement) {
-            pytanieElement.textContent = '🎉 Gratulacje! 🎉';
+            pytanieElement.textContent = ' Gratulacje! Zakończyłeśc naukę';
             const odpowiedzElement = document.getElementById('odpowiedz_fiszka');
             if (odpowiedzElement) {
                 odpowiedzElement.textContent = 'Ukończyłeś wszystkie fiszki!';
@@ -194,7 +194,7 @@ window.odejmij = async function() {
         console.log('To już pierwsza fiszka');
         const pytanieElement = document.getElementById('pytanie_fiszka');
         if (pytanieElement) {
-            pytanieElement.textContent = '📖 To już pierwsza fiszka!';
+            pytanieElement.textContent = 'To już pierwsza fiszka!';
             setTimeout(() => {
                 displayCurrentFlashcard();
             }, 1500);
@@ -208,13 +208,13 @@ function displayTechniquesInfo(selectedTechniques) {
     if (!labelElement) return;
     
     if (selectedTechniques.length === 0) {
-        labelElement.textContent = '📚 Wszystkie techniki';
+        labelElement.textContent = 'Wszystkie techniki';
         labelElement.style.backgroundColor = '#4CAF50';
     } else {
         const techniqueNamesList = selectedTechniques
             .map(id => techniqueNames[parseInt(id)] || `Technika ${id}`)
             .join(', ');
-        labelElement.textContent = `📖 Powtarzane techniki: ${techniqueNamesList}`;
+        labelElement.textContent = `Powtarzane techniki: ${techniqueNamesList}`;
         labelElement.style.backgroundColor = '#2196F3';
     }
 }
