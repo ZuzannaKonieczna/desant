@@ -33,7 +33,7 @@
         <label><input type="checkbox" value="14"> Szyfry</label><br>
         
         <button id="Potwierdz">Dalej</button>
-        <button id="Kontynuuj" >Resetuj</button>
+    
 
     <script>
         // Funkcja do zapisania wybranych technik
@@ -56,11 +56,7 @@
         }
 
         // Funkcja resetowania
-        function resetQuizSettings() {
-            localStorage.removeItem('selectedQuizTechniques');
-            localStorage.removeItem('quizQuestionCount');
-            window.location.href = 'quiz.html';
-        }
+    
 
         // Przycisk "Dalej"
         document.getElementById('Potwierdz').addEventListener('click', function() {
