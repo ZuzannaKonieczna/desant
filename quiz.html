@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szczep Harcerski "Skrzydło"</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel ="shortcut icon" href="images/icon.jpg" type="image/x-icon">
+    <script src="quiz.js" defer></script>
+</head>
+<body>
+    <div id="add-button">
+        <a href="index.html"><button class="back-css" type="button" aria-label="Wróć"></button></a>
+    </div>
+    <div id="logo">
+        <img src="images/skrzydlo_logo_biale.png" width="100" height="100" alt="Logo Szczepu Harcerskiego Skrzydło">
+    </div>
+    <nav>
+       <div id="pytanie">
+            PYTANIE
+       </div>
+       <button class="odp" id = "pytanie1">ODPOWIEDZ 1</button>
+       <button class="odp" id = "pytanie2">ODPOWIEDZ 2</button>
+       <button class="odp" id = "pytanie3">ODPOWIEDZ 3</button>
+       <button class="odp" id = "pytanie4">ODPOWIEDZ 4</button>
+    </nav>
+     <script>
+        // CZEKAMY AŻ SUPABASE SIĘ ZAŁADUJE
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sprawdzamy czy Supabase jest dostępny
+            if (typeof supabase === 'undefined' && typeof window.supabase === 'undefined') {
+                document.getElementById('pytanie').innerHTML = '❌ Błąd: Supabase nie mógł się załadować. Sprawdź połączenie z internetem.';
+                return;
+            }
+            
+            // Ładujemy główny skrypt
+            const script = document.createElement('script');
+            script.src = 'quiz.js';
+            document.body.appendChild(script);
+        });
+    </script>
+</body>
+</html>
