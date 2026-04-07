@@ -8,3 +8,4 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 async function pokaz1() {
     console.log('Funkcja pokaz() została wywołana');
 }
+document.addEventListener('DOMContentLoaded', init);
