@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // FUNKCJA WCZYTAJ PYTANIE
     async function wczytajPytanie() {
         try {
-            document.getElementById('pytanie').innerHTML = '⏳ Ładowanie pytania...';
+            document.getElementById('pytanie').innerHTML = ' Ładowanie pytania...';
             
             const { data, error } = await supabase
                 .from('Pytania')
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             if (!data || data.length === 0) {
-                document.getElementById('pytanie').innerHTML = '❌ Brak pytań w bazie!';
+                document.getElementById('pytanie').innerHTML = ' Brak pytań w bazie!';
                 document.getElementById('wynik').innerHTML = 'Dodaj pytania do tabeli "Pytania" w Supabase';
                 return;
             }
