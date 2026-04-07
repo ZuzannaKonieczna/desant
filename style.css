@@ -390,4 +390,16 @@ option {
 
 .odp{
    font-size: small;
+   transition: background-color 0.3s ease;
+   cursor: pointer;
+}
+
+.odp.correct {
+   background-color: #4CAF50 !important;
+   color: white;
+}
+
+.odp.incorrect {
+   background-color: #f44336 !important;
+   color: white;
 }
