@@ -112,6 +112,22 @@ function koniec() {
     document.querySelectorAll('.odp').forEach(btn => {
         btn.style.display = 'none'
     })
+
+    // Dodaj przyciski nawigacyjne
+    const nav = document.querySelector('nav')
+    
+    const buttonTechniki = document.createElement('button')
+    buttonTechniki.textContent = 'Wróć do wyboru technik'
+    buttonTechniki.className = 'odp'
+    buttonTechniki.onclick = () => window.location.href = 'quiz_settings.html'
+    
+    const buttonIndex = document.createElement('button')
+    buttonIndex.textContent = 'Wróć do strony głównej'
+    buttonIndex.className = 'odp'
+    buttonIndex.onclick = () => window.location.href = 'index.html'
+    
+    nav.appendChild(buttonTechniki)
+    nav.appendChild(buttonIndex)
 }
 
 // Inicjalizacja
