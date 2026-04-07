@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="add-button">
-        <a href="fiszki.html"><button class="back-css"></button></a>
+        <button class="back-css" id="backBtn"></button>
     </div><br>
     <div id="logo">
         <img src="images/skrzydlo_logo_biale.png" width="100" height="100" alt="Logo Szczepu Harcerskiego Skrzydło">
@@ -36,7 +36,8 @@
         <button id="Kontynuuj" >Kontynuuj poprzednią sesję</button>
 
     <script>
-        document.getElementById('Potwierdz').addEventListener('click', function() {
+        // Funkcja do zapisania wybranych technik
+        function saveTechniques(continueSession = false) {
             // Zbierz zaznaczone techniki
             const checkboxes = document.querySelectorAll('.techniki input[type="checkbox"]');
             const selectedTechniques = [];
@@ -50,19 +51,33 @@
             // Zapisz w localStorage
             localStorage.setItem('selectedTechniques', JSON.stringify(selectedTechniques));
             
-            // USUŃ ZAPISANY STAN FISZKI (zaczynamy nową sesję)
-            localStorage.removeItem('flashcardState');
+            // Jeśli to nowa sesja, wyczyść stary stan
+            if (!continueSession) {
+                localStorage.removeItem('flashcardState');
+            }
             
             // Przejdź do strony fiszek
             window.location.href = 'fiszki.html';
+        }
+
+        // Przycisk "Rozpocznij naukę"
+        document.getElementById('Potwierdz').addEventListener('click', function() {
+            saveTechniques(false); // Nowa sesja - usuń stary stan
         });
         
-        // Opcjonalny przycisk do kontynuowania poprzedniej sesji
+        // Przycisk "Kontynuuj"
         const kontynuujBtn = document.getElementById('Kontynuuj');
         if (kontynuujBtn) {
             kontynuujBtn.addEventListener('click', function() {
-                // Nie zmieniamy selectedTechniques ani nie usuwamy flashcardState
-                window.location.href = 'fiszki.html';
+                saveTechniques(true); // Kontynuacja - zachowaj stan
+            });
+        }
+
+        // Przycisk wstecz
+        const backBtn = document.getElementById('backBtn');
+        if (backBtn) {
+            backBtn.addEventListener('click', function() {
+                saveTechniques(true); // Wróć z zachowaniem zmian
             });
         }
     </script>
